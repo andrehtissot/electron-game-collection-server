@@ -1,0 +1,56 @@
+{
+    "name": "electron-game-collection-server",
+    "productName": "Game Collection Server",
+    "version": "1.0.0",
+    "description": "Server side of GameCollection for cache handling, complex operations and plugin access",
+    "main": "dist/index.js",
+    "scripts": {
+        "prebuild": "rm -rf ./dist/*",
+        "build": "tsc -p .",
+        "build-watch": "tsc -p . -w",
+        "build-release": "tsc -p .",
+        "start": "node dist/index.js",
+        "prettier": "find ./src -name '*.js' -or -name '*.ts' -or -name '*.tsx' -or -name '*.scss' | xargs prettier --write",
+        "tslint": "npx tslint -p . --fix",
+        "tsc": "npx tsc -p . --noEmit",
+        "tsc:files": "npx tsc -p . --noEmit | grep -v node_modules"
+    },
+    "author": "André Augusto Tissot",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/andrehtissot/electron-game-collection-server"
+    },
+    "bugs": {
+        "url": "https://github.com/andrehtissot/electron-game-collection-server/issues"
+    },
+    "homepage": "https://github.com/andrehtissot/electron-game-collection-server/blob/master/README.md",
+    "keywords": [
+        "steam",
+        "games collection",
+        "games manager"
+    ],
+    "platforms": [
+        "mac",
+        "windows",
+        "linux"
+    ],
+    "engines": {
+        "node": ">=10.15.3"
+    },
+    "typings": "src/typings",
+    "dependencies": {
+        "require-reload": "^0.2.2",
+        "ws": "^7.0.1"
+    },
+    "devDependencies": {
+        "@types/ws": "^6.0.1",
+        "prettier": "^1.18.2",
+        "tslint": "^5.18.0",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-config-standard": "^8.0.1",
+        "tslint-eslint-rules": "^5.4.0",
+        "tslint-microsoft-contrib": "^6.2.0",
+        "typescript": "^3.5.2"
+    }
+}
