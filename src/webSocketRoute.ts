@@ -1,14 +1,16 @@
-import WebSocket from 'ws'
-const reload: NodeRequire = require('require-reload')(require)
+import { default as WebSocket } from 'ws'
+import { getPlugin } from './routes/getPlugin'
+import { getPluginsAvailable } from './routes/getPluginsAvailable'
+import { IRunPluginParam, runPlugin } from './routes/runPlugin'
 
 export const webSocketRoute = async (operation: string, params: unknown, ws: WebSocket) => {
     switch (operation) {
         case 'getPluginsAvailable':
-            return reload('./routes/getPluginsAvailable').getPluginsAvailable(params)
+            return getPluginsAvailable()
         case 'getPlugin':
-            return reload('./routes/getPlugin').getPlugin(params)
+            return getPlugin(params)
         case 'runPlugin':
-            return reload('./routes/runPlugin').runPlugin(params, ws)
+            return runPlugin(params as IRunPluginParam, ws)
         default:
             console.warn(`Route accessed: "${operation}" with ${JSON.stringify(params) || ''}`)
     }

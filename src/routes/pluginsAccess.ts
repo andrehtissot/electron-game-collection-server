@@ -4,7 +4,6 @@ import { join } from 'path'
 import { PLUGINS_FOLDER } from '../config'
 import { FileSystemHelper } from '../helpers/FileSystemHelper'
 import { getPluginsDefinitions } from '../helpers/getPluginsDefinitions'
-const reload: NodeRequire = require('require-reload')(require)
 
 const fileSystem = new FileSystemHelper(PLUGINS_FOLDER)
 
@@ -16,7 +15,7 @@ for (const { key } of pluginsDefinitions) {
     if (!fileSystem.fileExistsSync(filePath)) {
         continue
     }
-    accessibleDirectoryByPluginKey[key] = reload(fileSystem.resolvePath(filePath)).default()
+    accessibleDirectoryByPluginKey[key] = require(fileSystem.resolvePath(filePath)).default()
 }
 
 export const pluginsAccess = (req: IncomingMessage, res: ServerResponse) => {

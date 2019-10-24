@@ -1,10 +1,6 @@
 import { join } from 'path'
 import { PLUGINS_FOLDER } from '../config'
-import { FileSystemHelper as importedFileSystemHelper } from '../helpers/FileSystemHelper'
-const reload: NodeRequire = require('require-reload')(require)
-const { FileSystemHelper }: { FileSystemHelper: typeof importedFileSystemHelper } = reload(
-    '../helpers/FileSystemHelper'
-)
+import { FileSystemHelper } from '../helpers/FileSystemHelper'
 
 export const getPlugin = async (pluginKey: unknown) => {
     if (!PLUGINS_FOLDER) {

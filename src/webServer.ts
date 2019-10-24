@@ -1,11 +1,11 @@
 import { createServer, Server } from 'http'
-const reload: NodeRequire = require('require-reload')(require)
+import { webRoute } from './webRoute'
 
 let webServer: Server | void
 
 export const open = ({ port }: { port: number }) => {
     webServer = createServer(async (req, res) => {
-        await reload('./webRoute').webRoute(req, res)
+        webRoute(req, res)
     }).listen(port)
 }
 

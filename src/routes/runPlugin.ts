@@ -1,13 +1,9 @@
 import { join } from 'path'
-import WebSocket from 'ws'
+import { default as WebSocket } from 'ws'
 import { PLUGINS_FOLDER } from '../config'
-import { FileSystemHelper as importedFileSystemHelper } from '../helpers/FileSystemHelper'
-const reload: NodeRequire = require('require-reload')(require)
-const { FileSystemHelper }: { FileSystemHelper: typeof importedFileSystemHelper } = reload(
-    '../helpers/FileSystemHelper'
-)
+import { FileSystemHelper } from '../helpers/FileSystemHelper'
 
-interface IRunPluginParam {
+export interface IRunPluginParam {
     pluginKey?: string
     operation?: string
     params?: unknown
@@ -33,7 +29,7 @@ export const runPlugin = async (data: IRunPluginParam | undefined, ws: WebSocket
     if (!fileSystem.fileExistsSync(`${operation}.js`)) {
         return ['ERROR', OPERATION_NOT_FOUND]
     }
-    const pluginOperation = reload(fileSystem.resolvePath(operation)).default
+    const pluginOperation = require(fileSystem.resolvePath(operation)).default
     if (!pluginOperation || typeof pluginOperation !== 'function') {
         return ['ERROR', 'plugin operation invalid']
     }

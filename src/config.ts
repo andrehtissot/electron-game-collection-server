@@ -13,5 +13,7 @@ if (fileSystem.fileExistsSync('plugins')) {
     pluginsFolder = fileSystem.resolvePath(join('..', '..', '..', 'plugins'))
 }
 
+// console.log('pluginsFolder', pluginsFolder)
+
 // tslint:disable:export-name
 export const PLUGINS_FOLDER = pluginsFolder

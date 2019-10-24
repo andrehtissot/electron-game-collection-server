@@ -1,5 +1,5 @@
-import WebSocket, { OPEN, Server } from 'ws'
-const reload: NodeRequire = require('require-reload')(require)
+import { default as WebSocket, OPEN, Server } from 'ws'
+import { webSocketRoute } from './webSocketRoute'
 
 let webSocketServer: Server | void
 
@@ -24,7 +24,7 @@ export const open = ({ port }: { port: number }) => {
     webSocketServer.on('connection', (ws: WebSocket) => {
         ws.on('message', async (message: string) => {
             const [operation, params]: [string, any] = JSON.parse(message)
-            const result = await reload('./webSocketRoute').webSocketRoute(operation, params, ws)
+            const result = await webSocketRoute(operation, params, ws)
             if (result !== undefined && ws.readyState === OPEN) {
                 ws.send(JSON.stringify(result))
             }

@@ -1,8 +1,6 @@
 import { join } from 'path'
 import { PLUGINS_FOLDER } from '../config'
-import { FileSystemHelper as importedFileSystemHelper } from './FileSystemHelper'
-const reload: NodeRequire = require('require-reload')(require)
-const { FileSystemHelper }: { FileSystemHelper: typeof importedFileSystemHelper } = reload('./FileSystemHelper')
+import { FileSystemHelper } from './FileSystemHelper'
 
 interface IPluginDefinition {
     name: string
@@ -22,7 +20,7 @@ export const getPluginsDefinitions = () => {
         if (!fileSystem.fileExistsSync(filepath)) {
             continue
         }
-        const { accessibleDirectory, name } = reload(fileSystem.resolvePath(filepath))
+        const { accessibleDirectory, name } = require(fileSystem.resolvePath(filepath))
         if (!name) {
             continue
         }
