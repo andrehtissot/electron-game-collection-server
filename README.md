@@ -16,9 +16,6 @@ The [electron-game-collection](https://github.com/andrehtissot/electron-game-col
 	- By-directional messaging communication; And
 	- `[operation: string, params: any[]] => [status: "SUCCESS" | "ERROR", payload: any]` standard.
 
-## `require-reload`
-As the app is build as its source files are changed, having the server auto-restarting is required. require-reload's dependency importing allowed to have the last version of the dependency on restart.
-
 The plugins, on both front and backend, act as extension of the app's functionality. And, to facilitate sharing data, share, the context from which to extend.
 
 # The Other Repos
