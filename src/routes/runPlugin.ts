@@ -33,15 +33,16 @@ export const runPlugin = async (data: IRunPluginParam | undefined, ws: WebSocket
     if (!pluginOperation || typeof pluginOperation !== 'function') {
         return ['ERROR', 'plugin operation invalid']
     }
-    const logLabel = `runPlugin: ${pluginKey}.${operation}`
+    const beforeTime = Date.now()
     let pluginResult: unknown
-    console.time(logLabel)
     try {
         pluginResult = await pluginOperation(params, ws)
     } catch (e) {
         console.error(e)
         pluginResult = ['ERROR', (e as Error).message]
     }
-    console.timeEnd(logLabel)
+    const afterTime = Date.now()
+    const logLabel = `runPlugin: ${pluginKey}.${operation}: ${afterTime - beforeTime}ms`
+    console.log(logLabel)
     return pluginResult
 }
