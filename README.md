@@ -20,4 +20,3 @@ The plugins, on both front and backend, act as extension of the app's functional
 
 # The Other Repos
 - [Frontend (ReactJS)](https://github.com/andrehtissot/electron-game-collection)
-- [Steam plugin (frontend & backend)](https://github.com/andrehtissot/electron-game-collection-steam-plugin)
