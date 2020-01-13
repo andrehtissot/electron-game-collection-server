@@ -1,5 +1,5 @@
 # Backend App
-The [electron-game-collection](https://github.com/andrehtissot/electron-game-collection) project has frontend, backend and pluguins in different git repos.
+The [electron-game-collection](https://github.com/andrehtissot/electron-game-collection) project has frontend, backend and plugins in different git repos.
 
 ## Reasons for a frontend (SPA) backend approach
 - Faster to development the frontend aside, as newer browser console features can be used;
