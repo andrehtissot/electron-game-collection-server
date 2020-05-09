@@ -40,17 +40,17 @@
     },
     "typings": "src/typings",
     "dependencies": {
-        "ws": "^7.2.3"
+        "ws": "^7.2.5"
     },
     "devDependencies": {
-        "@types/ws": "^7.2.3",
-        "prettier": "^2.0.2",
-        "tslint": "^6.1.0",
+        "@types/ws": "^7.2.4",
+        "prettier": "^2.0.5",
+        "tslint": "^6.1.2",
         "tslint-config-prettier": "^1.18.0",
         "tslint-config-standard": "^9.0.0",
         "tslint-eslint-rules": "^5.4.0",
         "tslint-microsoft-contrib": "^6.2.0",
         "typescript": "^3.8.3",
-        "minimist": ">=1.2.2"
+        "minimist": ">=1.2.5"
     }
 }
