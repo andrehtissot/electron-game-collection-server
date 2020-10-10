@@ -10,7 +10,7 @@ interface IPluginDefinition {
 
 export const getPluginsDefinitions = () => {
     if (!PLUGINS_FOLDER) {
-        throw new Error('no plugins available')
+        throw new Error(`no plugins available in ${PLUGINS_FOLDER}`)
     }
     const fileSystem = new FileSystemHelper(PLUGINS_FOLDER)
     const pluginFolders = fileSystem.readDirSync()
